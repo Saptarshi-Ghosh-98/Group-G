@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--Start of meta tags-->
+    <meta charset="utf-8" />
+    <meta name="description" content="Industry 4.0 IIT Indore" />
+    <!--description about the website-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Smart manufacturing,iiti,IIT Indore,industry 4.0,isw,search" />
+    <meta name="author" content="Souvik Mandal">
+    <!--/.End of meta tags-->
+    <title>
+        Results for "<%=username %>"
+    </title>
+    <link rel='stylesheet' href='/stylesheets/results.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+</head>
+<body>
+    <div id="box1 col-xs-12">
+        <nav class="navbar navbar-inverse navbar_ab navbar-fixed-top">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand temp changecolor" href="/" style="font-size: 220%">ISW</a>
+                </div>
+
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/" class="navbar_links_font">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--./End of header container-->
+    </div>
+    <div class="container-fluid main_contant">
+        <div style="color: black;font-family: 'Merriweather', serif;text-align: center"> <h1>Showing results for "<%=username %>"</h1></div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Type</th>
+            </tr>
+            </thead>
+            <tbody>
+            <%
+                // Showing results that similar to search key
+                for(var i=0;i<result1.length;i++){
+            %>
+            <tr>
+                <td>
+                    <a href='details/<%= result1[i].username %>'>
+                        <%=result1[i].username %>
+                    </a>
+                </td>
+
+                <td><%=result1[i].type %></td>
+            </tr>
+            <%
+                }
+            %>
+            <%
+                // Showing rest of rows from collection
+                for(var i=0;i<result2.length;i++){
+            %>
+
+            <tr>
+                <td>
+                <a href='details/<%= result2[i].username %>'>
+                    <%=result2[i].username %>
+                </a>
+                </td>
+                <td><%=result2[i].type %></td>
+            </tr>
+
+
+            <%
+            }
+            %>
+            <%
+                // Showing rest of rows from collection
+                for(var i=0;i<result3.length;i++){
+            %>
+
+            <tr>
+                <td>
+                <a href='details/<%= result3[i].username %>'>
+                    <%=result3[i].username %>
+                </a>
+                </td>
+                <td><%=result3[i].type %></td>
+            </tr>
+
+
+            <%
+            }
+            %>
+            <%
+                // Showing rest of rows from collection
+                for(var i=0;i<result4.length;i++){
+            %>
+
+            <tr>
+                <td>
+                <a href='details/<%= result4[i].username %>'>
+                    <%=result4[i].username %>
+                </a>
+                </td>
+                <td><%=result4[i].type %></td>
+            </tr>
+
+
+            <%
+            }
+            %>
+            </tbody>
+        </table>
+    </div>
+    </body>
+</html>
