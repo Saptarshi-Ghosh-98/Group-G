@@ -1,3 +1,4 @@
+#Author : Saptarshi Ghosh
 #Linear Regression
 #Imports
 import numpy as np 
