@@ -14,9 +14,11 @@
     </title>
     <link rel='stylesheet' href='/stylesheets/results.css' />
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div id="box1 col-xs-12">
+    <div id="col-xs-12">
         <nav class="navbar navbar-inverse navbar_ab navbar-fixed-top">
             <div class="container-fluid">
 
@@ -39,14 +41,39 @@
                             </a>
                         </li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                            <section class="webdesigntuts-workshop" >
+                              <form class="navbar-form navbar-right" action="/search" method="post" style="margin: 0px;" >     
+                                <input type="search"  placeholder="What are you looking ?" minlength=2 name="search" class="col-xs-9"/>         
+                                <button class="col-xs-3">Search</button>
+                              </form>
+                            </section>
+                       
+                    </ul>
                 </div>
             </div>
         </nav>
         <!--./End of header container-->
     </div>
     <div class="container-fluid main_contant">
-        <div style="color: black;font-family: 'Merriweather', serif;text-align: center"> <h1>Showing results for "<%=username %>"</h1></div>
-        <table class="table table-striped">
+        <div style="color: rgba(0, 161, 210,.9); text-shadow: 1px 1px 0  rgba(0,0,0,0.2);text-align: center"> <h1>Showing results for "<%=username %>"</h1></div>
+        <%
+            if(result1.length+result_2_1_types.length+result2.length+result3.length+result_2_2_types.length+result_2_3_types.length==0){
+        %>
+                <div style="font-size: 110%;">
+                    Your search - <b style="display: inline;"><%=username %> </b>- did not match any documents.<br/>
+                    Suggestions:<br/>
+                    <ul>
+                        <li>Make sure that all words are spelled correctly.</li>
+                        <li>Try different keywords.</li>
+                        <li>Try more general keywords.</li>
+                    </ul>
+                </div>
+        <%
+                }else{
+        %>
+        <table class="table table-hover table-responsive" style="background-color: white;">
             <thead>
             <tr>
                 <th>Username</th>
@@ -55,31 +82,44 @@
             </thead>
             <tbody>
             <%
-                // Showing results that similar to search key
+                // Showing results that similar to search key in "machine types" collection
                 for(var i=0;i<result1.length;i++){
             %>
-            <tr>
-                <td>
-                    <a href='details/<%= result1[i].username %>'>
-                        <%=result1[i].username %>
-                    </a>
+            <tr  onclick="window.location.href='details/<%= result1[i].username %>';">
+            	<td>
+                	
+                    <%=result1[i].username %>
                 </td>
 
                 <td><%=result1[i].type %></td>
+                
             </tr>
             <%
                 }
             %>
             <%
-                // Showing rest of rows from collection
+                // Showing results that similar to search key in " details " collection
+                for(var i=0;i<result_2_1_types.length;i++){
+            %>
+            <tr onclick="window.location.href='details/<%= result_2_1_types[i].username %>';">
+                <td>
+                    <%=result_2_1_types[i].username %>
+                    
+                </td>
+
+                <td><%=result_2_1_types[i].type %></td>
+            </tr>
+            <%
+                }
+            %>
+            <%
+                // Showing results which match first half of user input ,in "machine types" collection
                 for(var i=0;i<result2.length;i++){
             %>
 
-            <tr>
+            <tr onclick="window.location.href='details/<%= result2[i].username %>';">
                 <td>
-                <a href='details/<%= result2[i].username %>'>
-                    <%=result2[i].username %>
-                </a>
+                <%=result2[i].username %>
                 </td>
                 <td><%=result2[i].type %></td>
             </tr>
@@ -89,15 +129,13 @@
             }
             %>
             <%
-                // Showing rest of rows from collection
+                // Showing results which match last half of user input ,in "machine types" collection
                 for(var i=0;i<result3.length;i++){
             %>
 
-            <tr>
+            <tr onclick="window.location.href='details/<%= result3[i].username %>';">
                 <td>
-                <a href='details/<%= result3[i].username %>'>
-                    <%=result3[i].username %>
-                </a>
+                <%=result3[i].username %>
                 </td>
                 <td><%=result3[i].type %></td>
             </tr>
@@ -106,23 +144,43 @@
             <%
             }
             %>
+
+
+
+
+
             <%
-                // Showing rest of rows from collection
-                for(var i=0;i<result4.length;i++){
+                // Showing results which match first half of user input ,in "details" collection
+                for(var i=0;i<result_2_2_types.length;i++){
             %>
 
-            <tr>
+            <tr onclick="window.location.href='details/<%= result_2_2_types[i].username %>';">
                 <td>
-                <a href='details/<%= result4[i].username %>'>
-                    <%=result4[i].username %>
-                </a>
+                <%=result_2_2_types[i].username %> 
                 </td>
-                <td><%=result4[i].type %></td>
+                <td><%=result_2_2_types[i].type %></td>
             </tr>
 
 
             <%
             }
+            %>
+            <%
+                // Showing results which match last half of user input ,in "details" collection
+                for(var i=0;i<result_2_3_types.length;i++){
+            %>
+
+            <tr onclick="window.location.href='details/<%= result_2_3_types[i].username %>';">
+                <td>
+                <%=result_2_3_types[i].username %> 
+                </td>
+                <td><%=result_2_3_types[i].type %></td>
+            </tr>
+
+
+            <%
+            }
+        }
             %>
             </tbody>
         </table>

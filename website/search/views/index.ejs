@@ -14,8 +14,11 @@
   </title>
   <link rel='stylesheet' href='/stylesheets/search.css' />
   <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+  <style type="text/css">
+    
+  </style>
 </head>
-<body>
+<body style="background-color: #404040 !important;">
 <div id="box1 col-xs-12">
   <nav class="navbar navbar-inverse navbar_ab navbar-fixed-top">
     <div class="container-fluid">
@@ -45,19 +48,19 @@
   <!--./End of header container-->
 </div>
 <div class="container-fluid main_contant">
-  <div class="col-md-2" ></div>
-  <div class="col-xs-12 col-md-8 fields" >
-    <div >
-      <div style="color: black;font-family: 'Merriweather', serif;"> <h1>Search machine</h1></div>
-      <form action="/search" method="post">
-      <div class="search_input">
-        <input type="text" name="search" placeholder="Enter search keyword" class="col-xs-11 search_box" minlength=2 />
-        <input type="submit" name="submit" class="col-xs-11 submit_box" value="Search">
-      </div>
+  
+  <div class="fields" >
+      <div style="color: black;font-family: 'Merriweather', serif;"> <h1 style="color: #00a1d2;text-align: center; text-shadow: 1px 1px 0  rgba(0,0,0,0.8)">Search machine</h1></div>
+      <section class="webdesigntuts-workshop" >
+      <form action="/search" method="post" style="margin: 0px;" class="col-md-12 col-xs-12">      
+      	<div class="col-md-2"></div>  
+        <input type="search" class="col-xs-12 col-md-6" placeholder="What are you looking for?" minlength=2 name="search" />         
+        <button class="col-md-2 col-xs-12 ">Search</button>
+        <div class="col-md-2"></div>  
       </form>
-    </div>
+    </section>
   </div>
-  <div class="col-md-2" ></div>
+ 
 </div>
 <script src="<c:url value='javascripts/bootstrap.min.js'/>" ></script> <!-- /.bootstrap libraries -->
 <script type="text/javascript" src="js/jquery.min.js"></script>
